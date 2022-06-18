@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Paxel Mini Project</string>
+
+	<string name="title_1">Tebak</string>
+	<string name="title_2">Kenegaraanmu</string>
+
+	<string name="placeholder_search" >Masukkan nama mu</string>
+
+	<string name="label_name">nama</string>
+	<string name="label_result">adalah</string>
+	<string name="label_country">negara</string>
+	<string name="label_probability">probabilitas</string>
+
+</resources>
