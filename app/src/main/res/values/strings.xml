@@ -7,9 +7,8 @@
 
 	<string name="placeholder_search">Input your name</string>
 
-	<string name="label_name">name</string>
 	<string name="label_result">you are</string>
-	<string name="label_country">country</string>
 	<string name="label_probability">probability</string>
 
+	<string name="empty_state_info">No Data Available</string>
 </resources>

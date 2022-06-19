@@ -7,9 +7,8 @@
 
 	<string name="placeholder_search" >Masukkan nama mu</string>
 
-	<string name="label_name">nama</string>
 	<string name="label_result">adalah</string>
-	<string name="label_country">negara</string>
 	<string name="label_probability">probabilitas</string>
 
+	<string name="empty_state_info">Data tidak ditemukan</string>
 </resources>

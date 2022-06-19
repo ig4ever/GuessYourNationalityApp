@@ -12,8 +12,5 @@
 	<color name="primary">#6051A1</color>
 	<color name="secondary">#968DC2</color>
 	<color name="dark">#6E7191</color>
-	<color name="deep_dark">#30334F</color>
-	<color name="dark_light">#C4C4C4</color>
-	<color name="grey">#C4C4C480</color>
 
 </resources>

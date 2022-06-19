@@ -4,7 +4,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".MainActivity"
+	tools:context=".ui.view.MainActivity"
 	>
 
 	<LinearLayout
@@ -15,7 +15,6 @@
 		android:padding="20dp"
 		android:layout_marginTop="40dp"
 		>
-
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -35,8 +34,25 @@
 		/>
 	</LinearLayout>
 
+	<ToggleButton
+		android:id="@+id/tb_switch_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/bg_toggle"
+		android:elevation="10px"
+		android:textColor="@color/white"
+		android:layout_alignParentRight="true"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="20dp"
+		android:textSize="10sp"
+		android:fontFamily="@font/poppins_medium"
+		android:padding="10dp"
+		android:textOn="Switch List"
+		android:textOff="Switch Grid"
+	/>
+
 	<EditText
-		android:id="@+id/input_search"
+		android:id="@+id/et_keyword"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:elevation="10px"
@@ -55,7 +71,7 @@
 
 	<LinearLayout
 		android:id="@+id/result"
-		android:layout_below="@+id/input_search"
+		android:layout_below="@+id/et_keyword"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
@@ -63,14 +79,16 @@
 		android:layout_marginTop="20dp"
 	>
 		<TextView
+			android:id="@+id/tv_result_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Aisyah"
+			android:text=""
 			android:textColor="@color/secondary"
 			android:textSize="20sp"
 			android:fontFamily="@font/poppins_bold"
 		/>
 		<TextView
+			android:id="@+id/tv_label_result"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/label_result"
@@ -80,20 +98,43 @@
 			android:layout_marginHorizontal="8sp"
 			/>
 		<TextView
+			android:id="@+id/tv_result_country"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Indonesia"
+			android:text=""
 			android:textColor="@color/secondary"
 			android:textSize="20sp"
 			android:fontFamily="@font/poppins_bold"
 			/>
 	</LinearLayout>
 
-	<androidx.recyclerview.widget.RecyclerView
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/swipe_container"
+		android:layout_below="@+id/result"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+	>
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/rv_main"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			tools:listitem="@layout/item_list_search"
+		/>
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+	<TextView
+		android:id="@+id/empty_view"
+		android:layout_below="@+id/et_keyword"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/result"
-		tools:listitem="@layout/item_list_search"
+		android:layout_marginTop="20dp"
+		android:gravity="center"
+		android:textColor="@color/primary"
+		android:fontFamily="@font/poppins_bold"
+		android:textSize="30sp"
+		android:visibility="gone"
+		android:text="@string/empty_state_info"
 	/>
 
 </RelativeLayout>

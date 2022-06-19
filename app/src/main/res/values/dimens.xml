@@ -2,10 +2,6 @@
 <resources>
 	<dimen name="title_1">40sp</dimen>
 	<dimen name="title_2">36sp</dimen>
-	<dimen name="paragraph">14sp</dimen>
 	<dimen name="list_title">14sp</dimen>
-	<dimen name="list_item">16sp</dimen>
-	<dimen name="captions">14sp</dimen>
-	<dimen name="buttons">14sp</dimen>
 	<dimen name="text_inputs">16sp</dimen>
 </resources>
