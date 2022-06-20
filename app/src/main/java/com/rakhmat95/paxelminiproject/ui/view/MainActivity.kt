@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
         tb_switch_view.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                recylerView.layoutManager = GridLayoutManager(this, 2)
+                recylerView.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
             } else {
                 recylerView.layoutManager = LinearLayoutManager(this)
             }

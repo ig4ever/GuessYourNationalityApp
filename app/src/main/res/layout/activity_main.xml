@@ -137,6 +137,7 @@
 	>
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/rv_main"
+			app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			tools:listitem="@layout/item_list_search"
