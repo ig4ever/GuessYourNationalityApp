@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
     lateinit var tb_switch_view: ToggleButton
     lateinit var tb_language: ToggleButton
+    lateinit var tb_sort: ToggleButton
 
     lateinit var et_keyword: EditText
 
@@ -66,6 +67,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         empty_view = findViewById(R.id.empty_view)
         tb_switch_view =  findViewById(R.id.tb_switch_view)
         tb_language =  findViewById(R.id.tb_language)
+        tb_sort = findViewById(R.id.tb_sort)
         et_keyword = findViewById(R.id.et_keyword)
 
         mainAdapter = MainAdapter(ArrayList<Country>(), null)
@@ -142,6 +144,10 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
             if (mainViewModel.keyword.isNotEmpty()) {
                 mainViewModel.fetchDataPrediction(mainViewModel.keyword)
             }
+        }
+
+        tb_sort.setOnCheckedChangeListener { _, isChecked ->
+            mainViewModel.sort()
         }
 
         swipeRefreshLayout.setOnRefreshListener {

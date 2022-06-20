@@ -73,6 +73,12 @@ class MainViewModel : ViewModel() {
         resources = context.getResources()
     }
 
+    fun sort() {
+        prediction.value?.country?.reverse()
+        val reversedListCountry = prediction.value?.country
+        prediction.value = Prediction(prediction.value?.name!!, reversedListCountry!!)
+    }
+
     override fun onCleared() {
         super.onCleared()
     }
