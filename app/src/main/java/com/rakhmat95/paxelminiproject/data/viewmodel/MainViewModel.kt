@@ -1,11 +1,14 @@
 package com.rakhmat95.paxelminiproject.data.viewmodel
 
+import android.content.Context
+import android.content.res.Resources
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rakhmat95.paxelminiproject.data.model.Country
 import com.rakhmat95.paxelminiproject.data.model.Prediction
 import com.rakhmat95.paxelminiproject.data.repository.PredictionRepository
+import com.rakhmat95.paxelminiproject.utils.LocaleHelper
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import retrofit2.HttpException
@@ -16,6 +19,7 @@ import kotlin.collections.ArrayList
 
 class MainViewModel : ViewModel() {
     var fetchJob: Job? = null
+    var resources: Resources? = null
     var keyword = ""
 
     var repoPrediction = PredictionRepository()
@@ -23,24 +27,26 @@ class MainViewModel : ViewModel() {
     val _error = MutableLiveData<String>()
 
     fun fetchDataPrediction(name: String) {
-        keyword = name
-        fetchJob?.cancel() // cancel previous job when user enters new letter
+        keyword = name.replace(" ", "%20")
+        fetchJob?.cancel()
         fetchJob = viewModelScope.launch {
             delay(500)
-
             withContext(Dispatchers.IO) {
                 try {
-                    val result = repoPrediction.getPrediction(name)
-                    var listCountryName = URL("https://flagcdn.com/en/codes.json").readText()
-                    var jsonCountryName: JSONObject = JSONObject(listCountryName)
+                    if (keyword !== "") {
+                        val result = repoPrediction.getPrediction(keyword)
+                        var listCountryName = URL("https://flagcdn.com/en/codes.json").readText()
+                        var jsonCountryName: JSONObject = JSONObject(listCountryName)
 
-                    for (item in result.country) {
-                        if (item.countryId.isNotEmpty()) {
-                            item.countryName = jsonCountryName.getString(item.countryId.lowercase())
+                        for (item in result.country) {
+                            if (item.countryId.isNotEmpty()) {
+                                item.countryName = jsonCountryName.getString(item.countryId.lowercase())
+                            }
                         }
+                        prediction.postValue(result)
+                    } else {
+                        prediction.postValue(Prediction("", ArrayList<Country>()))
                     }
-
-                    prediction.postValue(result)
                 } catch (throwable: Throwable) {
                     when (throwable) {
                         is IOException -> {
@@ -51,9 +57,6 @@ class MainViewModel : ViewModel() {
                             val errorResponse = throwable.message()
                             _error.postValue("Error $code $errorResponse")
                         }
-                        else -> {
-                            _error.postValue("Unknown Error")
-                        }
                     }
                 }
             }
@@ -61,7 +64,13 @@ class MainViewModel : ViewModel() {
     }
 
     fun resetDataPrediction() {
+        keyword = ""
         prediction.value = Prediction("", ArrayList<Country>())
+    }
+
+    fun setLocale(context: Context, countryId: String) {
+        val context = LocaleHelper.setLocale(context, countryId)
+        resources = context.getResources()
     }
 
     override fun onCleared() {

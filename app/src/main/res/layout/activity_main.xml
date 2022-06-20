@@ -16,6 +16,7 @@
 		android:layout_marginTop="40dp"
 		>
 		<TextView
+			android:id="@+id/title_1"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/title_1"
@@ -24,6 +25,7 @@
 			android:fontFamily="@font/poppins_bold"
 		/>
 		<TextView
+			android:id="@+id/title_2"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/title_2"
@@ -35,20 +37,38 @@
 	</LinearLayout>
 
 	<ToggleButton
-		android:id="@+id/tb_switch_view"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="@drawable/bg_toggle"
+		android:id="@+id/tb_language"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
 		android:elevation="10px"
 		android:textColor="@color/white"
 		android:layout_alignParentRight="true"
 		android:layout_marginTop="20dp"
 		android:layout_marginRight="20dp"
-		android:textSize="10sp"
 		android:fontFamily="@font/poppins_medium"
 		android:padding="10dp"
-		android:textOn="Switch List"
-		android:textOff="Switch Grid"
+		android:textOff=""
+		android:textOn=""
+		android:layout_marginBottom="16dp"
+		android:background="@drawable/ic_tb_language"
+	/>
+
+	<ToggleButton
+		android:id="@+id/tb_switch_view"
+		android:layout_width="30dp"
+		android:layout_height="30dp"
+		android:elevation="10px"
+		android:textColor="@color/white"
+		android:layout_above="@+id/et_keyword"
+		android:layout_alignParentRight="true"
+		android:layout_marginTop="20dp"
+		android:layout_marginRight="20dp"
+		android:fontFamily="@font/poppins_medium"
+		android:padding="10dp"
+		android:textOff=""
+		android:textOn=""
+		android:layout_marginBottom="16dp"
+		android:background="@drawable/ic_tb_view"
 	/>
 
 	<EditText

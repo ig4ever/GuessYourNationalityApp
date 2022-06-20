@@ -14,5 +14,6 @@
 		<!-- Customize your theme here. -->
 		<item name="colorAccent">@color/primary</item>
 		<item name="android:textColorHighlight">@color/primary</item>
+
 	</style>
 </resources>

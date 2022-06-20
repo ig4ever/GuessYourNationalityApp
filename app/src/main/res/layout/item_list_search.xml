@@ -41,6 +41,7 @@
 	>
 
 		<TextView
+			android:id="@+id/tv_label_probability"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/label_probability"
