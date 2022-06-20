@@ -79,7 +79,9 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         mainViewModel.setLocale(this, "en")
 
         mainViewModel.prediction.observe(this, Observer<Prediction> {
-            recylerView.adapter = MainAdapter(it.country, mainViewModel.resources!!)
+            if (mainViewModel.resources !== null) {
+                recylerView.adapter = MainAdapter(it.country, mainViewModel.resources)
+            }
             tv_result_name.text = it.name
 
             if (it.country.isEmpty()) {
