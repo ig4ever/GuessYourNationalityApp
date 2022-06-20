@@ -70,17 +70,19 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         tb_sort = findViewById(R.id.tb_sort)
         et_keyword = findViewById(R.id.et_keyword)
 
-        mainAdapter = MainAdapter(ArrayList<Country>(), null)
-        recylerView.layoutManager = LinearLayoutManager(this)
-
-        tv_label_result.visibility = View.INVISIBLE
 
         var mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mainViewModel.setLocale(this, "en")
 
+        var gridLayoutManager = GridLayoutManager(this, 1)
+        mainAdapter = MainAdapter(ArrayList<Country>(), gridLayoutManager, mainViewModel.resources)
+        recylerView.layoutManager = gridLayoutManager
+
+        tv_label_result.visibility = View.INVISIBLE
+
         mainViewModel.prediction.observe(this, Observer<Prediction> {
             if (mainViewModel.resources !== null) {
-                recylerView.adapter = MainAdapter(it.country, mainViewModel.resources)
+                recylerView.adapter = MainAdapter(it.country, gridLayoutManager, mainViewModel.resources)
             }
             tv_result_name.text = it.name
 
@@ -125,9 +127,9 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
         tb_switch_view.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                recylerView.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.HORIZONTAL, false)
+                gridLayoutManager.spanCount = 2
             } else {
-                recylerView.layoutManager = LinearLayoutManager(this)
+                gridLayoutManager.spanCount = 1
             }
         }
 

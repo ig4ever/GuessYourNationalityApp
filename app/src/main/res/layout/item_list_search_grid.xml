@@ -5,7 +5,7 @@
           xmlns:app="http://schemas.android.com/apk/res-auto"
 >
 	<androidx.cardview.widget.CardView
-		android:layout_width="match_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		app:cardBackgroundColor="@color/primary"
 		android:layout_margin="20dp"
@@ -15,20 +15,27 @@
 		<RelativeLayout
 			android:id="@+id/label_country"
 			android:layout_width="match_parent"
-			android:layout_height="120dp"
-			android:orientation="horizontal"
+			android:layout_height="wrap_content"
 			android:gravity="center"
 			android:layout_gravity="center"
 			android:padding="10dp"
 		>
 			<LinearLayout
 				android:id="@+id/layout_1"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
 				android:orientation="vertical"
 				android:gravity="center"
-				android:layout_marginRight="60dp"
 			>
+				<TextView
+					android:id="@+id/tv_label_probability"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=""
+					android:textColor="@color/white"
+					android:textSize="@dimen/list_title"
+					android:fontFamily="@font/poppins_bold"
+				/>
 				<TextView
 					android:id="@+id/tv_country_name"
 					android:layout_width="wrap_content"
@@ -49,21 +56,11 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:layout_toRightOf="@+id/layout_1"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:orientation="vertical"
+				android:layout_below="@+id/layout_1"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
 				android:gravity="center"
 			>
-				<TextView
-					android:id="@+id/tv_label_probability"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="@string/label_probability"
-					android:textColor="@color/white"
-					android:textSize="@dimen/list_title"
-					android:fontFamily="@font/poppins_bold"
-				/>
 				<TextView
 					android:id="@+id/tv_probability"
 					android:layout_width="wrap_content"
